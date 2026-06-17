@@ -22,18 +22,18 @@ Search any GitHub username and instantly view their profile — avatar, bio, sta
 - Public repositories count
 - Followers & following count
 
-👉 **📂 Repository List**
+👉 **📂 Repository List with Stars, Forks & Language Badges** ✓
 - Top 6 repositories sorted by stars
 - Star, fork & watcher counts
-- Language badges with color coding
+- Language badges with dynamic color coding
 - Quick link to repository
 
-👉 **🎨 Dark / Light Theme Toggle**
+👉 **🎨 Dark / Light Theme Toggle** ✓
 - Smooth theme switcher in header
 - Persisted preference with localStorage
 - Optimized colors for both modes
 
-👉 **👥 Side-by-side User Comparison**
+👉 **👥 Side-by-Side User Comparison** ✓
 - Compare up to two GitHub profiles at once
 - View stats, repos, and followers side-by-side
 - Responsive layout for all devices
@@ -116,12 +116,11 @@ npm run build
 
 ## 🚀 Future Improvements
 
-- 🕘 Search history with localStorage
-- 🔑 GitHub OAuth for higher API limits
-- 📸 Shareable profile cards
-- 📈 Repository statistics & language breakdown
-- 🏆 Trending repositories widget
-- 🤖 AI-powered developer recommendations
+- 🔑 GitHub OAuth authentication for higher API rate limits
+- 📸 Shareable profile card screenshots
+- 📈 Repository statistics dashboard & language breakdown
+- 🏆 Trending repositories widget & recommendations
+- 💾 Export profile data as PDF or JSON
 
 ## 🤝 Contributing
 
