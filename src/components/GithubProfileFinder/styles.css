@@ -571,3 +571,290 @@
     justify-content: center;
   }
 }
+
+/* ===== Theme Toggle Button ===== */
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--accent-light);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-light);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* ===== Repositories Section ===== */
+.repos-section {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.repos-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.repos-title svg {
+  color: var(--accent-light);
+}
+
+.repos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.repo-card {
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  background: var(--bg-stat);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  color: inherit;
+  text-decoration: none !important;
+}
+
+.repo-card:hover {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+.repo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.repo-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-light);
+  word-break: break-word;
+  flex: 1;
+  min-width: 0;
+}
+
+.language-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.repo-description {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  line-height: 1.4;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.repo-stats {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.repo-stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.repo-stat svg {
+  color: var(--accent-light);
+}
+
+.repos-loading {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.skeleton-repo {
+  height: 100px;
+  border-radius: var(--radius-md);
+}
+
+.no-repos {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 20px;
+}
+
+/* ===== Comparison Mode ===== */
+.comparison-toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.comparison-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.comparison-toggle:hover {
+  border-color: var(--accent-light);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.comparison-toggle:active {
+  transform: translateY(0);
+}
+
+.comparison-toggle svg {
+  color: var(--accent-light);
+}
+
+.comparison-container {
+  margin-top: 24px;
+}
+
+.comparison-search {
+  margin-bottom: 24px;
+}
+
+.comparison-search .input-wrapper {
+  margin-bottom: 0;
+}
+
+.comparison-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.comparison-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.comparison-column .user-card {
+  flex: 1;
+}
+
+.comparison-column .error-card,
+.comparison-column .skeleton-card {
+  flex: 1;
+}
+
+/* Comparison highlight styles */
+.comparison-column .stats-row {
+  position: relative;
+}
+
+.comparison-column .stat-item {
+  position: relative;
+}
+
+/* ===== Responsive — Comparison ===== */
+@media (max-width: 1024px) {
+  .comparison-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .repos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .header-top {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .logo {
+    order: 2;
+  }
+
+  .theme-toggle {
+    order: 1;
+    width: 100%;
+  }
+
+  .repos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .repo-card {
+    padding: 12px;
+  }
+
+  .repo-header {
+    flex-wrap: wrap;
+  }
+
+  .language-badge {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .comparison-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-toggle {
+    width: 100%;
+  }
+}

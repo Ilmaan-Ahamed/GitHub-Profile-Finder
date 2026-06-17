@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 export default function User({ user }) {
   const {
     avatar_url,
@@ -15,8 +17,55 @@ export default function User({ user }) {
     html_url,
   } = user;
 
+  const [repos, setRepos] = useState([]);
+  const [reposLoading, setReposLoading] = useState(true);
+
   const createdDate = new Date(created_at);
   const formattedDate = `${createdDate.getDate()} ${createdDate.toLocaleString("en-us", { month: "short" })} ${createdDate.getFullYear()}`;
+
+  useEffect(() => {
+    async function fetchRepos() {
+      try {
+        const res = await fetch(`https://api.github.com/users/${login}/repos?sort=stars&per_page=6`);
+        if (res.ok) {
+          const data = await res.json();
+          setRepos(data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch repos:", err);
+      } finally {
+        setReposLoading(false);
+      }
+    }
+
+    fetchRepos();
+  }, [login]);
+
+  const getLanguageColor = (language) => {
+    const colors = {
+      javascript: "#f1e05a",
+      typescript: "#2b7489",
+      python: "#3572A5",
+      java: "#b07219",
+      csharp: "#239120",
+      cpp: "#f34b7d",
+      c: "#555555",
+      ruby: "#701516",
+      go: "#00ADD8",
+      rust: "#ce422b",
+      php: "#777bb4",
+      swift: "#FA7343",
+      kotlin: "#F18E33",
+      dart: "#00B4AB",
+      r: "#198CE7",
+      matlab: "#e16737",
+      scala: "#DC322F",
+      haskell: "#5e5086",
+      clojure: "#db5855",
+      erlang: "#B83998",
+    };
+    return colors[language?.toLowerCase()] || "#6b6560";
+  };
 
   return (
     <div className="user-card" id="user-card">
@@ -125,6 +174,74 @@ export default function User({ user }) {
           )}
         </div>
       )}
+
+      {/* Repositories Section */}
+      <div className="repos-section">
+        <h3 className="repos-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 7.5v9c0 .825-.675 1.5-1.5 1.5H3.5A1.5 1.5 0 0 1 2 16.5v-9A1.5 1.5 0 0 1 3.5 6H20.5c.825 0 1.5.675 1.5 1.5" />
+            <path d="M2 6h20" />
+          </svg>
+          Top Repositories
+        </h3>
+        {reposLoading ? (
+          <div className="repos-loading">
+            <div className="skeleton-repo skeleton-pulse" />
+            <div className="skeleton-repo skeleton-pulse" />
+            <div className="skeleton-repo skeleton-pulse" />
+          </div>
+        ) : repos.length > 0 ? (
+          <div className="repos-grid">
+            {repos.map((repo) => (
+              <a
+                key={repo.id}
+                href={repo.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="repo-card"
+              >
+                <div className="repo-header">
+                  <h4 className="repo-name">{repo.name}</h4>
+                  {repo.language && (
+                    <span className="language-badge" style={{ backgroundColor: getLanguageColor(repo.language) }}>
+                      {repo.language}
+                    </span>
+                  )}
+                </div>
+                {repo.description && (
+                  <p className="repo-description">{repo.description}</p>
+                )}
+                <div className="repo-stats">
+                  <span className="repo-stat">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.81 6.63L2 9.24l5.46 4.73L5.82 21 12 17.27z" />
+                    </svg>
+                    {repo.stargazers_count}
+                  </span>
+                  <span className="repo-stat">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1 1v16a1.5 1.5 0 0 0 1 1L9 18" />
+                      <path d="M15 6l2.5-2.5a1.5 1.5 0 0 1 1 1v16a1.5 1.5 0 0 1-1 1L15 18" />
+                    </svg>
+                    {repo.forks_count}
+                  </span>
+                  {repo.watchers_count > 0 && (
+                    <span className="repo-stat">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                      {repo.watchers_count}
+                    </span>
+                  )}
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <p className="no-repos">No repositories found</p>
+        )}
+      </div>
 
       {/* View Profile Button */}
       <a

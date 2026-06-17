@@ -1,10 +1,13 @@
 import GithubProfileFinder from './components/GithubProfileFinder';
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   return (
-    <div className="App">
-      <GithubProfileFinder />
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        <GithubProfileFinder />
+      </div>
+    </ThemeProvider>
   );
 }
 

@@ -22,6 +22,22 @@ Search any GitHub username and instantly view their profile — avatar, bio, sta
 - Public repositories count
 - Followers & following count
 
+👉 **📂 Repository List**
+- Top 6 repositories sorted by stars
+- Star, fork & watcher counts
+- Language badges with color coding
+- Quick link to repository
+
+👉 **🎨 Dark / Light Theme Toggle**
+- Smooth theme switcher in header
+- Persisted preference with localStorage
+- Optimized colors for both modes
+
+👉 **👥 Side-by-side User Comparison**
+- Compare up to two GitHub profiles at once
+- View stats, repos, and followers side-by-side
+- Responsive layout for all devices
+
 👉 **⚠️ Error Handling**
 - User not found (404) display
 - API rate limit warning
@@ -32,7 +48,7 @@ Search any GitHub username and instantly view their profile — avatar, bio, sta
 - Matches the card layout perfectly
 
 👉 **🎨 Premium UI**
-- Gold & black color scheme
+- Gold & black color scheme (with light mode)
 - Glassmorphism cards with backdrop blur
 - Smooth animations & hover effects
 - Fully responsive (mobile, tablet, desktop)
@@ -100,12 +116,12 @@ npm run build
 
 ## 🚀 Future Improvements
 
-- 📂 Repository list with stars, forks & language badges
-- 🌗 Dark / Light theme toggle
 - 🕘 Search history with localStorage
-- 👥 Side-by-side user comparison
 - 🔑 GitHub OAuth for higher API limits
 - 📸 Shareable profile cards
+- 📈 Repository statistics & language breakdown
+- 🏆 Trending repositories widget
+- 🤖 AI-powered developer recommendations
 
 ## 🤝 Contributing
 

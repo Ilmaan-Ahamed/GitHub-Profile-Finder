@@ -49,6 +49,31 @@
   --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Light Theme */
+[data-theme="light"] {
+  --bg-primary: #f5f3f0;
+  --bg-secondary: #ede9e4;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
+  --bg-input: rgba(0, 0, 0, 0.04);
+  --bg-stat: rgba(0, 0, 0, 0.02);
+  --bg-tag: rgba(212, 175, 55, 0.15);
+  --border: rgba(0, 0, 0, 0.08);
+  --border-focus: rgba(212, 175, 55, 0.4);
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #a0a0a0;
+  --accent: #d4af37;
+  --accent-light: #b8860b;
+  --accent-glow: rgba(212, 175, 55, 0.25);
+  --gradient-1: linear-gradient(135deg, #d4af37 0%, #b8860b 40%, #f0d060 100%);
+  --gradient-2: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(184, 134, 11, 0.1) 100%);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 40px rgba(212, 175, 55, 0.1);
+}
+
 body {
   font-family: var(--font);
   background: var(--bg-primary);
